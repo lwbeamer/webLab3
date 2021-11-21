@@ -1,0 +1,52 @@
+body{
+    color: #FFFFFF;
+    font-family: 'Nunito', sans-serif;
+    background-color: #5A5D67;
+    text-align: center;
+}
+table,tr,td{
+    padding: 0px;
+}
+
+#main-table{
+    width: 80%;
+    margin: auto;
+}
+#header{
+    background-color: #202225;
+    color: whitesmoke;
+    font-size: 17px;
+}
+.left-aligned{
+    float: left;
+    padding-top: 20px;
+    padding-left: 15px;
+}
+.right-aligned{
+    float: right;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#clock-header{
+    background-color: #202225;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 7px;
+}
+.datetime{
+    margin: auto;
+    width: 35%;
+    background-color: #3a2a45;
+}
+#date, #time{
+    font-size: 40px;
+}
+#button-containter{
+    /*background-color: #202225;*/
+    padding-top: 50px
+}
+.to-main-button{
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}

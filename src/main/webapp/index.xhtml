@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+
+    <h:head>
+        <h:outputStylesheet library="css" name="startpage.css" target="head"/>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300" rel="stylesheet"/>
+        <title>Start Page Web-Lab #3</title>
+    </h:head>
+
+    <h:body>
+        <table id ="main-table">
+            <tr>
+                <td id="header">
+                    <span class='left-aligned'>Осипов Василий Васильевич</span>
+                    <span class='right-aligned'>Вариант 10036<br/>Группа P3210</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3 id ="clock-header">Текущее время и дата</h3>
+                    <div class = "datetime">
+                        <p>
+                            <span id="date" class="date"/>
+                            <span id="time" class="time"/>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr id = "button-containter">
+                <td>
+                    <h:button styleClass="to-main-button" outcome="main" value="На главную"/>
+                </td>
+            </tr>
+        </table>
+
+        <h:outputScript library="js" name="datetime.js"/>
+    </h:body>
+
+</f:view>
+</html>

@@ -1,0 +1,176 @@
+body{
+    color: #FFFFFF;
+    font-family: 'Nunito', sans-serif;
+    background-color: #5A5D67;
+}
+table,tr,td{
+    padding: 0;
+}
+#main-table{
+    width: 95%;
+    margin: auto;
+}
+#header{
+    background-color: #202225;
+    color: whitesmoke;
+    font-size: 17px;
+}
+.left-aligned{
+    float: left;
+    padding-top: 20px;
+    padding-left: 15px;
+}
+.right-aligned{
+    float: right;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#result-table-square{
+    width: 60%;
+    position: relative;
+    vertical-align: top;
+    border-right: solid transparent 15px;
+}
+.result-header{
+    background-color: #202225;
+}
+.result-header-title{
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+}
+.result-content-table{
+    width: 100%;
+    background-color: #AFB1B5;
+    text-align: center;
+}
+
+.result-content-table td{
+    border: 1px solid #333946;
+    border-collapse: collapse;
+}
+
+.result-content-table th{
+    border: 2px solid #202225;
+    border-collapse: collapse;
+}
+
+.result-content{
+    position: absolute;
+    height: 90%;
+    padding-bottom: 4px;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: #36393F;
+}
+#result-content-table tr:nth-child(2n-1) {
+    background-color: #666666;
+}
+#result-content-table tr:nth-child(2n) {
+    background-color: #666666;
+}
+#result-content-table th:nth-child(-n+3) {
+    width: 12%;
+}
+#graph-table-square{
+    vertical-align: top;
+}
+.graph-header{
+    background-color: #202225;
+}
+.values-header{
+    background-color: #202225;
+}
+.graph-header-title{
+    text-align: center;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}
+.image-container{
+    position: relative;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+.graph-image{
+    height: 250px;
+    /*margin-left: 50px;*/
+}
+#values-table-square{
+    vertical-align: top;
+}
+.values-header-title{
+    text-align: center;
+    margin-bottom: 0;
+}
+.values-container{
+    background-color: #36393F;
+}
+.input-label{
+    width: 25%;
+}
+.input-value{
+    text-align: center;
+}
+#input-table{
+    margin: auto;
+}
+.x-buttons > *{
+    margin-right: 5px;
+    width: 36px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+}
+.x-buttons > *:hover{
+    font-weight: bold;
+    color: darkred;
+}
+.textinput{
+    width: 80%;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+}
+.slider{
+    margin-top: 7px;
+    margin-bottom: 5px;
+}
+.sub-res-buttons{
+    text-align: center;
+    margin-bottom: 12px;
+    padding-top: 7px;
+    border-top: solid whitesmoke 3px;
+}
+.service-button{
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.service-button:hover{
+    color: darkred;
+}
+text-error{
+    border: 1px solid #ff0000;
+}
+.text-error::placeholder{
+    color: #ff0000;
+}
+.button-clicked{
+    border: 3px solid green;
+}
+.button-error{
+    border: 1px solid #ff0000;
+    color: #ff0000;
+}
+#canvas{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.text-error{
+    border: 2px solid #ff0000;
+}
+.text-error::placeholder{
+    color: #ff0000;
+}

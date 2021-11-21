@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<f:view>
+
+    <h:head>
+        <h:outputStylesheet library="css" name="mainpage.css" target="head"/>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300" rel="stylesheet"/>
+        <title>Web-Lab #3</title>
+    </h:head>
+
+    <h:body>
+        <table id='main-table'>
+            <tr>
+                <td id='header' colspan="2">
+                    <span class='left-aligned'>Осипов Василий Васильевич</span>
+                    <span class='right-aligned'>Вариант 10036<br/>Группа P3210</span>
+                </td>
+            </tr>
+            <tr>
+                <td 	id='result-table-square' rowspan="2">
+                    <div class = 'result-header'>
+                        <h2 class = 'result-header-title'>Таблица</h2>
+                    </div>
+                    <div class = 'result-content'>
+                        <h:panelGroup id="valuesTable">
+                            <h:dataTable styleClass="result-content-table" value="#{pointBean.pointList}" var="point">
+                                <h:column>
+                                    <f:facet name="header">X</f:facet>
+                                    #{point.xValue}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Y</f:facet>
+                                    #{point.yValue}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">R</f:facet>
+                                    #{point.rValue}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Текущее время</f:facet>
+                                    #{point.currentTime}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Время выполнения</f:facet>
+                                    #{point.executionTime}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Результат</f:facet>
+                                    #{point.hitResult}
+                                </h:column>
+                            </h:dataTable>
+                        </h:panelGroup>
+                    </div>
+                </td>
+                <td id = 'graph-table-square'>
+                    <div class = 'graph-header'>
+                        <h2 class = 'graph-header-title'>График</h2>
+                    </div>
+                    <div class = 'image-container'>
+                        <object class="areas" type="image/svg+xml" data="resources/img/areas1.svg">
+                            <img src="resources/img/areas1.png" width="220" height="220" alt="График"/>
+                        </object>
+                        <canvas id = 'canvas' width="220" height="220">Интерактивный элемент не поддерживается</canvas>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td id ='values-table-square'>
+                    <div class = "values-header">
+                        <h2 class ='values-header-title'>Значения</h2>
+                    </div>
+                    <div class ='values-container'>
+                        <h:form id="hiddenForm" style="display: none">
+                            <h:inputText styleClass="pointX" value="#{pointBean.pointFromCanvas.xValue}"/>
+                            <h:inputText styleClass="pointY" value="#{pointBean.pointFromCanvas.yValue}"/>
+                            <h:inputText styleClass="pointR" value="#{pointBean.pointFromCanvas.rValue}"/>
+                            <h:inputHidden type="hidden" id="isFromGraphic"/>
+                            <h:commandButton styleClass="submitSvg" action="#{pointBean.addPointFromCanvas()}">
+                                <f:ajax execute="hiddenForm" render="valuesTable"/>
+                            </h:commandButton>
+                        </h:form>
+                        <h:form id = 'input-form'>
+                            <table id = 'input-table'>
+                                <tr>
+                                    <td class='input-label'>
+                                        <h3>X: </h3>
+                                    </td>
+                                    <td class = 'input-value'>
+                                        <div class = 'x-buttons'>
+                                            <h:commandButton id = 'x-button-1' styleClass="x-button-1" actionListener="#{pointBean.changeX}" onclick="changeX(this,-3)" value="-3"/>
+                                            <h:commandButton id = 'x-button-2' styleClass="x-button-2" actionListener="#{pointBean.changeX}" onclick="changeX(this,-2)" value="-2"/>
+                                            <h:commandButton id = 'x-button-3' styleClass="x-button-3" actionListener="#{pointBean.changeX}" onclick="changeX(this,-1)" value="-1"/>
+                                            <h:commandButton id = 'x-button-4' styleClass="x-button-4" actionListener="#{pointBean.changeX}" onclick="changeX(this,0)" value="0"/>
+                                            <h:commandButton id = 'x-button-5' styleClass="x-button-5" actionListener="#{pointBean.changeX}" onclick="changeX(this,1)" value="1"/>
+                                            <h:commandButton id = 'x-button-6' styleClass="x-button-6" actionListener="#{pointBean.changeX}" onclick="changeX(this,2)" value="2"/>
+                                            <h:commandButton id = 'x-button-7' styleClass="x-button-7" actionListener="#{pointBean.changeX}" onclick="changeX(this,3)" value="3"/>
+                                            <h:commandButton id = 'x-button-8' styleClass="x-button-8" actionListener="#{pointBean.changeX}" onclick="changeX(this,4)" value="4"/>
+                                            <h:commandButton id = 'x-button-9' styleClass="x-button-9" actionListener="#{pointBean.changeX}" onclick="changeX(this,5)" value="5"/>
+                                        </div>
+                                        <h:inputHidden id = "x-hidden" value="#{pointBean.pointFromForm.xValue}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class='input-label'>
+                                        <h3>Y: </h3>
+                                    </td>
+                                    <td class='input-value'>
+                                        <h:inputText id="y-textinput" styleClass="textinput" value="#{pointBean.pointFromForm.yValue}" maxlength="10" placeholder="(-5; 5)" onchange="changeY()"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class='input-label'>
+                                        <h3>R: </h3>
+                                    </td>
+                                    <td class='input-value'>
+                                        <p:inputText id="r" value="#{pointBean.pointFromForm.rValue}" disabled = "false"/>
+                                        <p:slider styleClass="slider" for="r"  minValue="1" maxValue="4" step="0.25" onSlideEnd="changeR()"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan='2'>
+                                        <div class='sub-res-buttons'>
+                                            <h:commandButton id = 'submit-button' styleClass="service-button" type="submit" value="Принять" action="#{pointBean.addPointFromForm}">
+                                                <f:ajax execute="input-form" render="valuesTable"/>
+                                            </h:commandButton>
+                                            <h:commandButton id = 'reset-button' styleClass="service-button" type = "submit" value="Сброс" action="#{pointBean.clear}" onclick="clearCanvas()">
+                                                <f:ajax execute="newEntryForm" render="valuesTable"/>
+                                            </h:commandButton>
+                                            <h:button id = 'goback-button' styleClass="service-button" outcome="index" value="На стартовую"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </h:form>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <h:outputScript library="js" name="app.js"/>
+        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>
+    </h:body>
+
+
+
+
+</f:view>
+</html>
